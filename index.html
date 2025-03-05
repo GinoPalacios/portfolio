@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gino Palacios Portfolio</title>
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
         .body-container { 
             background-color: #DDDBD5;
             display: flex;
@@ -12,88 +19,75 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            right: 0px;
+            position: relative;
         }
         .ginopalacios-container {
             position: absolute;
             top: 15px;
             left: 15px;
         }
-        .about-red-container {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-        }
-        .graphic-yellow-container {
-            position: absolute;
-            top: 42px;
-            right: 15px;
-        }
-        .content-creation-pink-container {
-            position: absolute;
-            top: 69px;
-            right: 15px;
-        }
-        .copywriting-green-container {
-            position: absolute;
-            top: 96px;
-            right: 15px;
-        }
-        .illustration-purple-container {
-            position: absolute;
-            top: 123px;
-            right: 15px;
-        }
+        .about-red-container,
+        .graphic-yellow-container,
+        .content-creation-pink-container,
+        .copywriting-green-container,
+        .illustration-purple-container,
         .objects-blue-container {
             position: absolute;
-            top: 150px;
             right: 15px;
         }
+        .about-red-container { top: 15px; }
+        .graphic-yellow-container { top: 42px; }
+        .content-creation-pink-container { top: 69px; }
+        .copywriting-green-container { top: 96px; }
+        .illustration-purple-container { top: 123px; }
+        .objects-blue-container { top: 150px; }
         .gino-container {
             position: absolute;
-            width: 375px;
-            height: 375px;
+            width: 50%;
+            max-width: 375px;
+            height: auto;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        .communal-container {
-            position: absolute;
-            width: 153px;
-            height: 142px;
-            top: 575px;
-            left: 850px;
-            opacity: 80%;
-        }
-        .pathways-container {
-            position: absolute;
-            width: 269px;
-            height: 248px;
-            top: 300px;
-            left: 325px;
-            opacity: 80%;
-        }
-        .weaving-container {
-            position: absolute;
-            width: 149px;
-            height: 225px;
-            top: 450px;
-            right: 100px;
-        }
+        .communal-container,
+        .pathways-container,
+        .weaving-container,
         .encyclo-container {
             position: absolute;
-            width: 360px;
-            height: 224px;
-            top: 50px;
-            right: 350px;
             opacity: 80%;
+        }
+        .communal-container {
+            width: 20%;
+            max-width: 153px;
+            height: auto;
+            top: 70%;
+            left: 58%;
+        }
+        .pathways-container {
+            width: 30%;
+            max-width: 269px;
+            height: auto;
+            top: 50%;
+            left: 20%;
+        }
+        .weaving-container {
+            width: 20%;
+            max-width: 149px;
+            height: auto;
+            top: 60%;
+            right: 10%;
+        }
+        .encyclo-container {
+            width: 40%;
+            max-width: 360px;
+            height: auto;
+            top: 4%;
+            right: 25%;
         }
         .gino, .communal, .weaving, .pathways, .encyclo {
             width: 100%;
-            height: 100%;
+            height: auto;
             transition: filter 0.3s;
         }
         .center-image, .new-center-image {
@@ -103,8 +97,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1000;
-            width: 841px;
-            height: 512px;
+            width: 90%;
+            max-width: 841px;
+            height: auto;
         }
         .grayscale {
             filter: grayscale(100%);
@@ -112,13 +107,51 @@
         .close-button {
             display: none;
             position: fixed;
-            top: 160px;
-            right: 340px;
+            top: 10%;
+            right: 10%;
             background-color: white;
             border: none;
             font-size: 20px;
             cursor: pointer;
             z-index: 1001;
+        }
+        @media (max-width: 768px) {
+            .about-red-container,
+            .graphic-yellow-container,
+            .content-creation-pink-container,
+            .copywriting-green-container,
+            .illustration-purple-container,
+            .objects-blue-container {
+                right: 5px;
+            }
+            .gino-container {
+                width: 70%;
+            }
+            .communal-container,
+            .pathways-container,
+            .weaving-container,
+            .encyclo-container {
+                width: 30%;
+            }
+        }
+        @media (max-width: 480px) {
+            .about-red-container,
+            .graphic-yellow-container,
+            .content-creation-pink-container,
+            .copywriting-green-container,
+            .illustration-purple-container,
+            .objects-blue-container {
+                right: 2px;
+            }
+            .gino-container {
+                width: 90%;
+            }
+            .communal-container,
+            .pathways-container,
+            .weaving-container,
+            .encyclo-container {
+                width: 40%;
+            }
         }
     </style>
 </head>
