@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gino Palacios Portfolio</title>
+    <style>
+        .body-container { 
+            background-color: #DDDBD5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+        }
+        .ginopalacios-container {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+        .about-red-container {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        .graphic-yellow-container {
+            position: absolute;
+            top: 42px;
+            right: 15px;
+        }
+        .content-creation-pink-container {
+            position: absolute;
+            top: 69px;
+            right: 15px;
+        }
+        .copywriting-green-container {
+            position: absolute;
+            top: 96px;
+            right: 15px;
+        }
+        .illustration-purple-container {
+            position: absolute;
+            top: 123px;
+            right: 15px;
+        }
+        .objects-blue-container {
+            position: absolute;
+            top: 150px;
+            right: 15px;
+        }
+        .gino-container {
+            position: absolute;
+            width: 375px;
+            height: 375px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .communal-container {
+            position: absolute;
+            width: 153px;
+            height: 142px;
+            top: 575px;
+            left: 850px;
+            opacity: 80%;
+        }
+        .pathways-container {
+            position: absolute;
+            width: 269px;
+            height: 248px;
+            top: 300px;
+            left: 325px;
+            opacity: 80%;
+        }
+        .weaving-container {
+            position: absolute;
+            width: 149px;
+            height: 225px;
+            top: 450px;
+            right: 100px;
+        }
+        .encyclo-container {
+            position: absolute;
+            width: 360px;
+            height: 224px;
+            top: 50px;
+            right: 350px;
+            opacity: 80%;
+        }
+        .gino, .communal, .weaving, .pathways, .encyclo {
+            width: 100%;
+            height: 100%;
+            transition: filter 0.3s;
+        }
+        .center-image, .new-center-image {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            width: 841px;
+            height: 512px;
+        }
+        .grayscale {
+            filter: grayscale(100%);
+        }
+        .close-button {
+            display: none;
+            position: fixed;
+            top: 160px;
+            right: 340px;
+            background-color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <div class="body-container" onclick="resetColor()">
+    </div>
+    <div class="ginopalacios-container" onclick="resetColor()">
+        <img src="https://i.postimg.cc/j5F0s97H/ginopalacios-website-title.png" class="ginopalacios" width="180" height="36" />
+    </div>
+    <div class="about-red-container" id="aboutRed" onclick="showRed()">
+        <img src="https://i.postimg.cc/pr3HB7VW/about-website-button-red.png" class="about-red" width="41" height="20" />
+    </div> 
+    <div class="graphic-yellow-container" id="graphicYellow" onclick="showYellow()">
+        <img src="https://i.postimg.cc/1tnPNsPC/graphic-design-button-yellow.png" class="graphic-yellow" width="110" height="20" />
+    </div>
+    <div class="content-creation-pink-container">
+        <img src="https://i.postimg.cc/RZ5m6jbG/content-creation-button-pink.png" class="content-creation-pink" width="120" height="20" />
+    </div>
+    <div class="copywriting-green-container">
+        <img src="https://i.postimg.cc/BnT0xMr3/copywriting-button-green.png" class="copywriting-green" width="90" height="20" />
+    </div>
+    <div class="illustration-purple-container" id="illustrationPurple" onclick="showPurple()">
+        <img src="https://i.postimg.cc/QCKLVbQR/illustration-button-purple.png" class="illustration-purple" width="80" height="20" />
+    </div>
+    <div class="objects-blue-container" id="objectsBlue" onclick="showBlue()">
+        <img src="https://i.postimg.cc/sxkkWhK1/objects-button-blue.png" class="objects-blue" width="55" height="20" />
+    </div>
+    <div class="gino-container" onclick="showNewCenterImage()" onmouseover="showRed()">
+        <img src="https://i.postimg.cc/2ycd0nzY/gino-headshot-red.png" class="gino">
+    </div>
+    <div class="communal-container" onclick="showCenterImage()" onmouseover="showBlue()">
+        <img src="https://i.postimg.cc/rmnz3kH6/Communal-nourishment-blue.jpg" class="communal">
+    </div>
+    <div class="pathways-container" onmouseover="showBlue()">
+        <img src="https://i.postimg.cc/MK2LCQJD/Pathways-blue.png" class="pathways"/>
+    </div>
+    <div class="weaving-container" onmouseover="showPurple()">
+        <img src="https://i.postimg.cc/1tChrYN3/weaving-purple.jpg" class="weaving">
+    </div>
+    <div class="encyclo-container" onmouseover="showYellow()">
+        <img src="https://i.postimg.cc/nLWQhWBf/Elastic-page-3-yellow.png" class="encyclo">
+    </div>
+    <div class="center-image-container" id="centerImageContainer">
+        <button class="close-button" id="closeButton" onclick="hideCenterImage()">×</button>
+        <img src="https://i.postimg.cc/JhKCFt7d/9-D6-EC246-D289-4-E27-8858-E0-A57-BAC9818.jpg" class="center-image" id="centerImage">
+    </div>
+    <div class="new-center-image-container" id="newCenterImageContainer">
+        <button class="close-button" id="newCloseButton" onclick="hideNewCenterImage()">×</button>
+        <img src="https://i.postimg.cc/05fBvh7h/275-DDE3-B-9-BC8-4848-B113-906-E88599-C29.jpg" class="new-center-image" id="newCenterImage">
+    </div>
+
+    <script>
+        function showCenterImage() {
+            document.getElementById('centerImage').style.display = 'block';
+            document.getElementById('closeButton').style.display = 'block';
+            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
+                img.classList.add('grayscale');
+            });
+        }
+
+        function hideCenterImage() {
+            document.getElementById('centerImage').style.display = 'none';
+            document.getElementById('closeButton').style.display = 'none';
+            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
+                img.classList.remove('grayscale');
+            });
+        }
+
+        function showNewCenterImage() {
+            document.getElementById('newCenterImage').style.display = 'block';
+            document.getElementById('newCloseButton').style.display = 'block';
+            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
+                img.classList.add('grayscale');
+            });
+        }
+
+        function hideNewCenterImage() {
+            document.getElementById('newCenterImage').style.display = 'none';
+            document.getElementById('newCloseButton').style.display = 'none';
+            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
+                img.classList.remove('grayscale');
+            });
+        }
+        function showRed() {
+            showOnlyRed();
+        }
+        function showOnlyRed() {
+            document.getElementById('aboutRed').style.display = 'block';
+            document.querySelectorAll('.communal, .weaving, .pathways, .encyclo').forEach(img => {
+                img.classList.add('grayscale');
+            });
+            document.querySelectorAll('.gino').forEach(img => {
+                img.classList.remove('grayscale');
+            });
+        }
+        function showBlue() {
+            showOnlyBlue();
+        }
+        function showOnlyBlue() {
+            document.getElementById('objectsBlue').style.display = 'block';
+            document.querySelectorAll('.gino, .weaving, .encyclo').forEach(img => {
+                img.classList.add('grayscale');
+            });
+            document.querySelectorAll('.communal, .pathways').forEach(img => {
+                img.classList.remove('grayscale');
+            });
+        }
+        function showPurple() {
+            showOnlyPurple();
+        }
+        function showOnlyPurple() {
+            document.getElementById('illustrationPurple').style.display = 'block';
+            document.querySelectorAll('.gino, .communal, .pathways, .encyclo').forEach(img => {
+                img.classList.add('grayscale');
+            });
+            document.querySelectorAll('.weaving').forEach(img => {
+                img.classList.remove('grayscale');
+            });
+        }
+        function showYellow() {
+            showOnlyYellow();
+        }
+        function showOnlyYellow() {
+            document.getElementById('graphicYellow').style.display = 'block';
+            document.querySelectorAll('.gino, .communal,.weaving, .pathways').forEach(img => {
+                img.classList.add('grayscale');
+            });
+            document.querySelectorAll('.encyclo').forEach(img => {
+                img.classList.remove('grayscale');
+            });
+        }
+        function resetColor() {
+            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
+                img.classList.remove('grayscale');
+            });
+        }
+    </script>
+</body>
+</html>
