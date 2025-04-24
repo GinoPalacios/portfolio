@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight:wght@400;700&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gino Palacios Portfolio</title>
@@ -10,7 +11,7 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow-x: hidden;
+            overflow: hidden; /* Prevent overflow outside of the viewport */
         }
         .body-container { 
             background-color: #DDDBD5;
@@ -23,227 +24,359 @@
         }
         .ginopalacios-container {
             position: absolute;
-            top: 15px;
+            top: 20px;
             left: 15px;
+            transform: scale(1); /* Default scale */
+            transform-origin: top left;
+            z-index: 50; /* Bring .ginopalacios-container to the front */
         }
-        .about-red-container,
-        .graphic-yellow-container,
-        .content-creation-pink-container,
-        .copywriting-green-container,
-        .illustration-purple-container,
-        .objects-blue-container {
-            position: absolute;
-            right: 15px;
-        }
-        .about-red-container { top: 15px; }
-        .graphic-yellow-container { top: 42px; }
-        .content-creation-pink-container { top: 69px; }
-        .copywriting-green-container { top: 96px; }
-        .illustration-purple-container { top: 123px; }
-        .objects-blue-container { top: 150px; }
+        
         .gino-container {
             position: absolute;
+            opacity: 0.9;
             width: 50%;
             max-width: 375px;
             height: auto;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); /* Center horizontally and vertically */
+            z-index: 10; /* Ensure .gino is on top */
         }
-        .communal-container,
+
         .pathways-container,
         .weaving-container,
-        .encyclo-container {
-            position: absolute;
-            opacity: 80%;
-        }
-        .communal-container {
+        .encyclo-container,
+        .communal-container,
+        .hopper-container,
+        .aarp-container, 
+        .bounce-container,
+        .pockets-container {
+            position: absolute; /* Ensure proper positioning */
+            opacity: 0.8; /* Slightly transparent */
+            z-index: 20; /* Higher z-index to stay on top of .body-container */
             width: 20%;
-            max-width: 153px;
-            height: auto;
-            top: 70%;
-            left: 58%;
+            max-width: 200px;
         }
-        .pathways-container {
-            width: 30%;
-            max-width: 269px;
-            height: auto;
-            top: 50%;
-            left: 20%;
-        }
-        .weaving-container {
-            width: 20%;
-            max-width: 149px;
-            height: auto;
-            top: 60%;
-            right: 10%;
-        }
-        .encyclo-container {
-            width: 40%;
-            max-width: 360px;
-            height: auto;
-            top: 4%;
-            right: 25%;
-        }
-        .gino, .communal, .weaving, .pathways, .encyclo {
+        .gino, .communal, .weaving, .pathways, .encyclo, .hopper, .aarp, .bounce, .pockets {
             width: 100%;
             height: auto;
             transition: filter 0.3s;
-        }
-        .center-image, .new-center-image {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            width: 90%;
-            max-width: 841px;
-            height: auto;
+        
         }
         .grayscale {
             filter: grayscale(100%);
         }
-        .close-button {
-            display: none;
-            position: fixed;
-            top: 10%;
-            right: 10%;
-            background-color: white;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 1001;
+        .side-buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            gap: 5px; /* Add spacing between buttons */
+            transform: scale(1); /* Default scale */
+            transform-origin: top right;
+            z-index: 50; /* Bring .side-buttons-container to the front */
         }
-        @media (max-width: 768px) {
-            .about-red-container,
-            .graphic-yellow-container,
-            .content-creation-pink-container,
-            .copywriting-green-container,
-            .illustration-purple-container,
-            .objects-blue-container {
-                right: 5px;
+
+        @media (max-width: 865px) {
+            .side-buttons-container {
+                transform: scale(0.8); /* Scale down for tablets and smaller screens */
             }
-            .gino-container {
-                width: 70%;
+
+            .ginopalacios-container {
+                transform: scale(0.8); /* Scale down for tablets and smaller screens */
             }
-            .communal-container,
-            .pathways-container,
-            .weaving-container,
-            .encyclo-container {
-                width: 30%;
+
+            .overlay-content {
+                flex-direction: column; /* Stack image and text vertically */
+                display: flex; /* Enable flex layout */
+                align-items: center; /* Center align items horizontally */
+                justify-content: center; /* Center align items vertically */
+                text-align: center; /* Center-align text */
+            }
+
+            .overlay-text {
+                margin: 0; /* Remove additional margin */
+                margin-top: -230px; /* Shift the text higher up on the screen */
+                font-size: smaller;
+            }
+
+            .overlay-image {
+                order: -1; /* Move the image above the text */
+                transform: scale(0.43); /* Scale down for tablets and smaller screens */
+                margin-top: -120px; /* Shift the text higher up on the screen */
+                height: auto; /* Maintain aspect ratio */
+            }
+            .blue-overlay-content {
+                flex-direction: column; /* Stack image and text vertically */
+                display: flex; /* Enable flex layout */
+                align-items: center; /* Center align items horizontally */
+                justify-content: center; /* Center align items vertically */
+                text-align: center; /* Center-align text */
+            }
+            .blue-overlay-image {
+                height: auto; /* Maintain aspect ratio */
+                transform: scale(0.43); /* Scale down for tablets and smaller screens */
+            }
+            .blue-overlay-text {
+                padding: 0 1.5rem; /* Add padding for mobile screens */
+                margin-bottom: 2rem; /* Add space below the text for mobile screens */
+            }
+            .gallery-controls {
+                padding: 0 1.5rem; /* Add padding for mobile screens */
             }
         }
+
         @media (max-width: 480px) {
-            .about-red-container,
-            .graphic-yellow-container,
-            .content-creation-pink-container,
-            .copywriting-green-container,
-            .illustration-purple-container,
-            .objects-blue-container {
-                right: 2px;
+            .side-buttons-container {
+                transform: scale(0.6); /* Scale down further for mobile */
             }
-            .gino-container {
-                width: 90%;
+
+            .ginopalacios-container {
+                transform: scale(0.6); /* Scale down further for mobile */
             }
-            .communal-container,
-            .pathways-container,
-            .weaving-container,
-            .encyclo-container {
-                width: 40%;
+        }
+
+        @media (min-width: 865px) {
+            .ginopalacios-container {
+                transform: scale(1); /* Reset scale for larger screens */
             }
+
+            .side-buttons-container {
+                transform: scale(1); /* Reset scale for larger screens */
+            }
+
+            .overlay-content {
+                flex-direction: row; /* Stack image and text side by side */
+                display: flex; /* Enable flex layout */
+                align-items: center; /* Center align items vertically */
+                justify-content: center; /* Center align items horizontally */
+                text-align: left; /* Left-align text */
+                font-size: 20px; /* Correct font size declaration */
+                gap: 1rem; /* Add spacing between image and text */
+                width: calc(100% - 3rem); /* Ensure consistent margins by subtracting padding */
+            }
+
+            .overlay-image {
+                height: auto; /* Maintain aspect ratio */
+                margin-top: 10px; /* Add spacing above the image */
+                width: auto; /* Correct invalid width declaration */
+            }
+
+            .blue-overlay-content {
+                display: flex; /* Ensure it is displayed as a flex container */
+                flex-direction: row; /* Stack image and text side by side */
+                align-items: center; /* Center align items vertically */
+                justify-content: center; /* Center align items horizontally */
+                font-size: 1.3rem;
+                padding: 0 2rem; /* Add padding for larger screens */
+            }
+
+            .yellow-overlay-text {
+                margin: 3rem; /* Add 3rem margins for larger screens */
+                margin-left: 25%;
+                margin-right: 25%;
+                max-width: 70%; /* Decrease the width of the text */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .ginopalacios-container {
+                transform: scale(1.1); /* Increase scale for desktop screens */
+                transform-origin: top left;
+            }
+
+            .side-buttons-container {
+                transform: scale(1.1); /* Increase scale for desktop screens */
+                transform-origin: top right;
+            }
+            .overlay-text {
+                font-size: 1.3rem; /* Increase font size for desktop users */
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; /* Overlay takes up the full screen */
+            height: 100%;
+            background-color: rgba(184, 39, 0, 0.8); /* Red overlay */
+            display: none; /* Hidden by default */
+            color: white;
+            z-index: 10000; /* Ensure it is on top of everything */
+            overflow-y: auto; /* Add scrolling if content overflows */
+        }
+
+        .overlay-content {
+            display: flex; /* Ensure flex layout is applied */
+            position: absolute; /* Allow positioning relative to the viewport */
+            top: 20%; /* Ensure the content starts 20% down from the top of the screen */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -20%); /* Center both horizontally and vertically */
+            gap: 1rem; /* Add spacing between image and text */
+            width: calc(100% - 3rem); /* Ensure consistent margins by subtracting padding */
+            margin: 0 auto; /* Center the content */
+            font-family: 'Zilla Slab', serif;
+        }
+
+        .blue-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 135, 220, 0.9); /* Blue overlay with 0.9 opacity */
+            z-index: 9999; /* Ensure it is on top of everything */
+            display: none; /* Hidden by default */
+            color: white;
+            overflow-y: auto; /* Add scrolling if content overflows */
+            font-family: 'Zilla Slab', serif;
+
+        }
+
+        .gallery-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .gallery-slide {
+            display: none; /* Hide slides by default */
+            position: absolute;
+            width: 80%;
+            height: auto;
+            transform: scale(1); /* Default scale */
+            transform-origin: left center; /* Scale from the left */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gallery-slide.active {
+            display: block; /* Show the active slide */
+            opacity: 1; /* Ensure visibility */
+        }
+
+        .gallery-controls {
+            position: absolute;
+            bottom: 15%;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 2rem;
+            z-index: 10; /* Ensure controls are above slides */
+        }
+
+        .gallery-button {
+            background-color: rgb(0, 90, 147, 0.8);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+            font-family: 'Zilla Slab', serif;
+        }
+
+        .gallery-button:hover {
+            background-color: rgba(2, 67, 108, 0.8);
         }
     </style>
 </head>
 <body>
-    <div class="body-container" onclick="resetColor()">
+    <div class="body-container" onmouseover="resetColor()">
     </div>
     <div class="ginopalacios-container" onclick="resetColor()">
         <img src="https://i.postimg.cc/j5F0s97H/ginopalacios-website-title.png" class="ginopalacios" width="180" height="36" />
     </div>
-    <div class="about-red-container" id="aboutRed" onclick="showRed()">
-        <img src="https://i.postimg.cc/pr3HB7VW/about-website-button-red.png" class="about-red" width="41" height="20" />
-    </div> 
-    <div class="graphic-yellow-container" id="graphicYellow" onclick="showYellow()">
-        <img src="https://i.postimg.cc/1tnPNsPC/graphic-design-button-yellow.png" class="graphic-yellow" width="110" height="20" />
+    <div class="side-buttons-container">
+        <div class="about-red-container" id="aboutRed" onclick="showRed()">
+            <img src="https://i.postimg.cc/pr3HB7VW/about-website-button-red.png" class="about-red" width="41" height="20" />
+        </div> 
+        <div class="graphic-yellow-container" id="graphicYellow" onclick="showYellow()">
+            <img src="https://i.postimg.cc/1tnPNsPC/graphic-design-button-yellow.png" class="graphic-yellow" width="110" height="20" />
+        </div>
+        <div class="content-pink-container" id = "contentPink" onclick="showPink()">
+            <img src="https://i.postimg.cc/RZ5m6jbG/content-creation-button-pink.png" class="content-pink" width="120" height="20" />
+        </div>
+        <div class="copy-green-container" id= "copyGreen" onclick="showGreen()">
+            <img src="https://i.postimg.cc/zXx46NMH/copywriting-button-green.png" class="copy-green" width="90" height="20" />
+        </div>
+        <div class="illustration-purple-container" id="illustrationPurple" onclick="showPurple()">
+            <img src="https://i.postimg.cc/QCKLVbQR/illustration-button-purple.png" class="illustration-purple" width="80" height="20" />
+        </div>
+        <div class="objects-blue-container" id="objectsBlue" onclick="showBlue()">
+            <img src="https://i.postimg.cc/sxkkWhK1/objects-button-blue.png" class="objects-blue" width="55" height="20" />
+        </div>
     </div>
-    <div class="content-creation-pink-container">
-        <img src="https://i.postimg.cc/RZ5m6jbG/content-creation-button-pink.png" class="content-creation-pink" width="120" height="20" />
-    </div>
-    <div class="copywriting-green-container">
-        <img src="https://i.postimg.cc/BnT0xMr3/copywriting-button-green.png" class="copywriting-green" width="90" height="20" />
-    </div>
-    <div class="illustration-purple-container" id="illustrationPurple" onclick="showPurple()">
-        <img src="https://i.postimg.cc/QCKLVbQR/illustration-button-purple.png" class="illustration-purple" width="80" height="20" />
-    </div>
-    <div class="objects-blue-container" id="objectsBlue" onclick="showBlue()">
-        <img src="https://i.postimg.cc/sxkkWhK1/objects-button-blue.png" class="objects-blue" width="55" height="20" />
-    </div>
-    <div class="gino-container" onclick="showNewCenterImage()" onmouseover="showRed()">
+    <div class="gino-container" onclick="showGinoOverlay()" onmouseover="showRed()">
         <img src="https://i.postimg.cc/2ycd0nzY/gino-headshot-red.png" class="gino">
     </div>
-    <div class="communal-container" onclick="showCenterImage()" onmouseover="showBlue()">
-        <img src="https://i.postimg.cc/rmnz3kH6/Communal-nourishment-blue.jpg" class="communal">
+    <div class="artworks-container" class="artworks">
+        <div class="communal-container" onclick="showCenterImage()" onmouseover="showBlue()">
+            <img src="https://i.postimg.cc/rmnz3kH6/Communal-nourishment-blue.jpg" class="communal">
+        </div>
+        <div class="pathways-container" onclick="showPathwaysPic()" onmouseover="showBlue()">
+            <img src="https://i.postimg.cc/MK2LCQJD/Pathways-blue.png" class="pathways"/>
+        </div>
+        <div class="weaving-container" onmouseover="showPurple()">
+            <img src="https://i.postimg.cc/1tChrYN3/weaving-purple.jpg" class="weaving">
+        </div>
+        <div class="encyclo-container" onmouseover="showYellow()">
+            <img src="https://i.postimg.cc/nLWQhWBf/Elastic-page-3-yellow.png" class="encyclo">
+        </div>
+        <div class="hopper-container" onmouseover="showBlue()">
+            <img src="https://i.postimg.cc/qvk5nP8W/hopper.jpg" class="hopper">
+        </div>
+        <div class="aarp-container" onmouseover="showGreen()">
+            <img src="https://i.postimg.cc/tRDzVs4t/aarp.jpg" class="aarp">
+        </div>
+        <div class="bounce-container" onmouseover="showPink()">
+            <img src="https://i.postimg.cc/G3kmMDyG/bounce-pink.jpg" class="bounce">
+        </div>
+        <div class="pockets-container" onclick="showPocketsOverlay()" onmouseover="showBlue()">
+            <img src="https://i.postimg.cc/c4NMNyMh/bmp2.png" class="pockets">
+        </div>
     </div>
-    <div class="pathways-container" onmouseover="showBlue()">
-        <img src="https://i.postimg.cc/MK2LCQJD/Pathways-blue.png" class="pathways"/>
-    </div>
-    <div class="weaving-container" onmouseover="showPurple()">
-        <img src="https://i.postimg.cc/1tChrYN3/weaving-purple.jpg" class="weaving">
-    </div>
-    <div class="encyclo-container" onmouseover="showYellow()">
-        <img src="https://i.postimg.cc/nLWQhWBf/Elastic-page-3-yellow.png" class="encyclo">
-    </div>
-    <div class="center-image-container" id="centerImageContainer">
-        <button class="close-button" id="closeButton" onclick="hideCenterImage()">×</button>
-        <img src="https://i.postimg.cc/JhKCFt7d/9-D6-EC246-D289-4-E27-8858-E0-A57-BAC9818.jpg" class="center-image" id="centerImage">
-    </div>
-    <div class="new-center-image-container" id="newCenterImageContainer">
-        <button class="close-button" id="newCloseButton" onclick="hideNewCenterImage()">×</button>
-        <img src="https://i.postimg.cc/05fBvh7h/275-DDE3-B-9-BC8-4848-B113-906-E88599-C29.jpg" class="new-center-image" id="newCenterImage">
-    </div>
-
     <script>
-        function showCenterImage() {
-            document.getElementById('centerImage').style.display = 'block';
-            document.getElementById('closeButton').style.display = 'block';
-            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
-                img.classList.add('grayscale');
-            });
-        }
-
-        function hideCenterImage() {
-            document.getElementById('centerImage').style.display = 'none';
-            document.getElementById('closeButton').style.display = 'none';
-            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
-                img.classList.remove('grayscale');
-            });
-        }
-
-        function showNewCenterImage() {
-            document.getElementById('newCenterImage').style.display = 'block';
-            document.getElementById('newCloseButton').style.display = 'block';
-            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
-                img.classList.add('grayscale');
-            });
-        }
-
-        function hideNewCenterImage() {
-            document.getElementById('newCenterImage').style.display = 'none';
-            document.getElementById('newCloseButton').style.display = 'none';
-            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
-                img.classList.remove('grayscale');
-            });
-        }
         function showRed() {
             showOnlyRed();
         }
         function showOnlyRed() {
             document.getElementById('aboutRed').style.display = 'block';
-            document.querySelectorAll('.communal, .weaving, .pathways, .encyclo').forEach(img => {
+            document.querySelectorAll('.communal, .weaving, .pathways, .encyclo, .hopper, .aarp, .bounce, .pockets').forEach(img => {
                 img.classList.add('grayscale');
             });
             document.querySelectorAll('.gino').forEach(img => {
+                img.classList.remove('grayscale');
+            });
+        }
+        function showGreen() {
+            showOnlyGreen();
+        }
+        function showOnlyGreen() {
+            document.getElementById('copyGreen').style.display = 'block';
+            document.querySelectorAll('.communal, .weaving, .pathways, .encyclo, .hopper, .bounce, .gino, .pockets').forEach(img => {
+                img.classList.add('grayscale');
+            });
+            document.querySelectorAll('.aarp').forEach(img => {
+                img.classList.remove('grayscale');
+            });
+        }
+        function showPink() {
+            showOnlyPink();
+        }
+        function showOnlyPink() {
+            document.getElementById('contentPink').style.display = 'block';
+            document.querySelectorAll('.communal, .gino, .weaving, .pathways, .encyclo, .hopper, .aarp, .pockets').forEach(img => {
+                img.classList.add('grayscale');
+            });
+            document.querySelectorAll('.bounce').forEach(img => {
                 img.classList.remove('grayscale');
             });
         }
@@ -252,10 +385,10 @@
         }
         function showOnlyBlue() {
             document.getElementById('objectsBlue').style.display = 'block';
-            document.querySelectorAll('.gino, .weaving, .encyclo').forEach(img => {
+            document.querySelectorAll('.gino, .weaving, .encyclo, .aarp, .bounce').forEach(img => {
                 img.classList.add('grayscale');
             });
-            document.querySelectorAll('.communal, .pathways').forEach(img => {
+            document.querySelectorAll('.communal, .pathways, .hopper, .pockets').forEach(img => {
                 img.classList.remove('grayscale');
             });
         }
@@ -264,7 +397,7 @@
         }
         function showOnlyPurple() {
             document.getElementById('illustrationPurple').style.display = 'block';
-            document.querySelectorAll('.gino, .communal, .pathways, .encyclo').forEach(img => {
+            document.querySelectorAll('.gino, .communal, .pathways, .encyclo, .hopper, .aarp, .bounce, .pockets').forEach(img => {
                 img.classList.add('grayscale');
             });
             document.querySelectorAll('.weaving').forEach(img => {
@@ -276,7 +409,7 @@
         }
         function showOnlyYellow() {
             document.getElementById('graphicYellow').style.display = 'block';
-            document.querySelectorAll('.gino, .communal,.weaving, .pathways').forEach(img => {
+            document.querySelectorAll('.gino, .communal,.weaving, .pathways, .hopper, .aarp, .bounce, .pockets').forEach(img => {
                 img.classList.add('grayscale');
             });
             document.querySelectorAll('.encyclo').forEach(img => {
@@ -284,10 +417,424 @@
             });
         }
         function resetColor() {
-            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo').forEach(img => {
+            document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo, .hopper, .aarp, .bounce, .pockets').forEach(img => {
                 img.classList.remove('grayscale');
             });
         }
+
+        function makeDraggable() {
+            const elements = document.querySelectorAll('.pathways-container, .weaving-container, .encyclo-container, .communal-container, .hopper-container, .aarp-container, .bounce-container, .pockets-container');
+
+            elements.forEach(element => {
+                element.style.cursor = 'grab';
+                let offsetX = 0, offsetY = 0;
+
+                element.addEventListener('mousedown', (e) => {
+                    offsetX = e.clientX - element.getBoundingClientRect().left;
+                    offsetY = e.clientY - element.getBoundingClientRect().top;
+                    element.style.cursor = 'grabbing';
+
+                    function onMouseMove(event) {
+                        element.style.position = 'absolute';
+                        element.style.left = `${event.clientX - offsetX}px`;
+                        element.style.top = `${event.clientY - offsetY}px`;
+                    }
+
+                    document.addEventListener('mousemove', onMouseMove);
+
+                    document.addEventListener('mouseup', () => {
+                        document.removeEventListener('mousemove', onMouseMove);
+                        element.style.cursor = 'grab';
+                    }, { once: true });
+                });
+            });
+        }
+
+        function randomizePositions() {
+            const containers = document.querySelectorAll('.pathways-container, .weaving-container, .encyclo-container, .communal-container, .hopper-container, .aarp-container, .bounce-container, .pockets-container');
+            const bodyWidth = window.innerWidth;
+            const bodyHeight = window.innerHeight;
+
+            containers.forEach(container => {
+                const containerWidth = container.offsetWidth;
+                const containerHeight = container.offsetHeight;
+
+                const maxTop = bodyHeight - containerHeight; // Ensure the container stays within the viewport vertically
+                const maxLeft = bodyWidth - containerWidth; // Ensure the container stays within the viewport horizontally
+
+                const randomTop = Math.random() * maxTop; // Random top position within bounds
+                const randomLeft = Math.random() * maxLeft; // Random left position within bounds
+
+                container.style.position = 'absolute';
+                container.style.top = `${randomTop}px`; // Set top position
+                container.style.left = `${randomLeft}px`; // Set left position
+            });
+        }
+
+        function makeImageEditable(imageElement) {
+            let isDragging = false;
+            let startX, startY, initialLeft, initialTop;
+
+            imageElement.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+
+                const rect = imageElement.getBoundingClientRect();
+                initialLeft = rect.left;
+                initialTop = rect.top;
+
+                imageElement.style.cursor = 'grabbing';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+
+                imageElement.style.left = `${initialLeft + deltaX}px`;
+                imageElement.style.top = `${initialTop + deltaY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    imageElement.style.cursor = 'grab';
+                }
+            });
+
+            // Allow resizing
+            imageElement.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const scale = e.deltaY < 0 ? 1.1 : 0.9; // Zoom in or out
+                const currentWidth = imageElement.offsetWidth;
+                imageElement.style.width = `${currentWidth * scale}px`;
+            });
+        }
+
+        function showGinoOverlay(event) {
+            event.stopPropagation(); // Prevent duplicate event triggers
+
+            let overlay = document.createElement('div');
+            overlay.className = 'overlay';
+
+            overlay.innerHTML = `
+                <div class="overlay-content">
+                    <div class="overlay-text">
+                            My work centers on beautifying physical and digital spaces through the use of color and unexpected elements. I approach my practice as a multimedia exploration, utilizing unconventional, and typically recycled, materials to either enhance existing items or create entirely new objects. In the digital realm, my practice is characterized by vibrant color palettes, varying opacities, layered images and distinct yet legible typography.
+                        </p>
+                            My creativity is fueled by the things that brought me joy as a child—small toys and trinkets, bright colors, and geometric shapes. These elements evoke a personal nostalgia that often becomes the heart of my work. Beyond sentiment, my influences are both practical and environmental. I am driven by a passion for conservation, transforming materials to give them new life rather than letting them end up in landfills. At the same time, my commitment to cost-effective creation pushes me to utilize what I already have or source materials freely, allowing me to bring my visions to life in inventive ways. As a result, sustainability is not just a consideration in my work—it is an essential part of my creative process.
+                        </p>
+                            Whether working in the physical or digital domain, my goal is to create pieces that are eccentric yet grounded, playful yet professional, surprising yet structured. Ultimately, I hope that my work brings a sense of joy and curiosity to the spaces it inhabits and the people that encounter it.
+                        </p>
+                    </div>
+                    <div class="overlay-image">
+                        <img src="https://i.postimg.cc/0jG22MYF/gino-drawing-og.jpg" alt="Gino Drawing" style="left: 0; top: 0;">
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(overlay);
+            overlay.style.display = 'flex';
+
+            // Remove the overlay when clicked
+            overlay.addEventListener('click', () => {
+                overlay.remove();
+            });
+        }
+
+        function toggleBlueOverlayWithGallery(text, imageUrls) {
+            const overlay = document.getElementById('blueOverlay');
+            const overlayContent = document.getElementById('blueOverlayContent');
+            const slidesHtml = imageUrls
+                .map((url, index) => `<img src="${url}" alt="Gallery Image" class="gallery-slide ${index === 0 ? 'active' : ''}">`)
+                .join('');
+            overlayContent.innerHTML = `
+                <div class="gallery-container">
+                    ${slidesHtml}
+                    <div class="gallery-controls">
+                        <button class="gallery-button" onclick="prevSlide(event)">&#8592;</button> <!-- Left arrow -->
+                        <button class="gallery-button" onclick="nextSlide(event)">&#8594;</button> <!-- Right arrow -->
+                    </div>
+                </div>
+                <div class="blue-overlay-text">
+                    ${text}
+                </div>
+            `;
+            overlay.style.display = 'flex'; // Ensure the overlay is visible
+        }
+
+        let currentSlideIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.gallery-slide');
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide(event) {
+            event.stopPropagation(); // Prevent closing the overlay
+            const slides = document.querySelectorAll('.gallery-slide');
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        function prevSlide(event) {
+            event.stopPropagation(); // Prevent closing the overlay
+            const slides = document.querySelectorAll('.gallery-slide');
+            currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        function showPocketsOverlay() {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 135, 220, 0.9)'; /* Blue background */
+            overlay.style.zIndex = '9999';
+            overlay.style.display = 'flex';
+            overlay.style.flexDirection = 'column';
+            overlay.style.justifyContent = 'flex-start';
+            overlay.style.alignItems = 'center';
+            overlay.style.color = 'white'; /* White text */
+            overlay.style.fontFamily = "'Zilla Slab', serif";
+            overlay.style.textAlign = 'center';
+            overlay.style.fontSize = '1.3rem';
+            overlay.style.overflowY = 'auto'; /* Enable scrolling */
+
+            const images = [
+                'https://i.postimg.cc/MpNCWpsN/crop-mp1.png',
+                'https://i.postimg.cc/6p8sJvhC/mp2.png'
+            ];
+
+            const slidesHtml = images
+                .map((url) => `<img src="${url}" alt="Pockets Image" style="max-width: 80%; height: auto; margin-bottom: 1rem;">`)
+                .join('');
+
+            overlay.innerHTML = `
+                <div class="blue-overlay-text" style="max-width: 90%; margin-bottom: 1rem;">
+                    <p>
+                        No pockets? No problem! 
+                        For this project, the prompt was to create any product that solves a problem. This object could be something that challenges systems that aren’t working, or something that encourages community engagement. As part of my product development, I was asked to “bodystorm”, to create a mind-map related to the object, a “Day In The Life Of”, a mood board, a research board, a line drawing, a rendering, and a material separation of the product. In addition, I was tasked with creating one final physical model and 10 different product iterations, including quick prototypes and precise prototypes.
+                    </p>
+                    <p>
+                        The product I created is Magnetic Pockets—pockets that can stick onto any article of clothing using magnets in each of the four corners. The product includes a front pocket that goes over your clothing and a back fabric piece that’s inserted beneath the clothing to keep it secured.
+                    </p>
+                    <p>
+                        These pockets address the misogynistic problem of women's clothing often lacking pockets due to their appearance being prioritized over functionality. These pockets also focus on the huge problem of textile waste in that they are upcycled from donated materials. In addition to the requirements listed above, I took several images documenting the creation process, provided all of the different versions of the pattern, additional iteration sketches, a lifecycle diagram, and a material sample board.
+                    </p>
+                    <p>
+                        <a href="https://1drv.ms/p/c/73b3dc79e6552c71/EaLd8OE1lutCi6KXboTCSGcBH9_H-1mdjvSaOrgKhqaqKg?e=YaiiSZ" 
+                           target="_blank" 
+                           style="color: white; text-decoration: underline;">
+                           More info
+                        </a>
+                    </p>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    ${slidesHtml}
+                </div>
+            `;
+
+            overlay.addEventListener('click', (e) => {
+                if (!e.target.closest('img') && !e.target.closest('p')) {
+                    overlay.remove(); // Remove the overlay when clicking outside the content
+                }
+            });
+
+            document.body.appendChild(overlay);
+        }
+
+        // Call the functions after the DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Disable dragging for all elements
+            document.querySelectorAll('*').forEach(element => {
+                element.setAttribute('draggable', 'false');
+            });
+
+            makeDraggable('.pathways-container, .weaving-container, .encyclo-container, .communal-container, .gino-container, .aarp-container, .bounce-container, .pockets-container');
+            randomizePositions();
+
+            const ginoContainer = document.querySelector('.gino');
+            ginoContainer.addEventListener('click', (event) => {
+                ginoContainer.removeEventListener('click', showGinoOverlay); // Ensure it only runs once per click
+                showGinoOverlay(event);
+            });
+
+            document.querySelector('#aboutRed').addEventListener('click', showGinoOverlay);
+
+            const ginopalaciosContainer = document.querySelector('.ginopalacios-container');
+            ginopalaciosContainer.addEventListener('click', () => {
+                randomizePositions(); // Apply randomizePositions on click
+            });
+
+            const pathways = document.querySelector('.pathways');
+            const hopper = document.querySelector('.hopper');
+            const communal = document.querySelector('.communal');
+            const pockets = document.querySelector('.pockets');
+            const overlay = document.createElement('div');
+            overlay.id = 'blueOverlay';
+            overlay.className = 'blue-overlay';
+            overlay.innerHTML = `<div id="blueOverlayContent" class="blue-overlay-content"></div>`;
+            document.body.appendChild(overlay);
+
+            pathways.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleBlueOverlayWithContent('', '');
+            });
+
+            hopper.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleBlueOverlayWithGallery(
+                    'This kangaroo (or “joey”) inspired hopping machine—built using materials from a provided kit—is designed to jump after a delay of 8 to 60 seconds. This laser-cut design uses an earplug as a friction timer, with tension from the torsion springs gradually pulling a fishing line attached to the earplug to trigger the hop. Once the earplug is completely pulled out from the metal loop on the hopper, the Joey hops 14 inches into the air.<br><br><a href="https://docs.google.com/presentation/d/1I0JVF_vBFbJep2bE6OthfJhBxImAJ1Ce/edit?usp=sharing&ouid=117358781891280228726&rtpof=true&sd=true" target="_blank" style="color: white; text-decoration: underline;">More info</a>',
+                    [
+                        'https://i.postimg.cc/G2kHCyMX/IMG-0114-4.avif',
+                        'https://i.postimg.cc/VsWdZX06/IMG-0133-4.avif',
+                        'https://i.postimg.cc/wvK7ZVkt/IMG-0126-4.avif',
+                        'https://i.postimg.cc/pd5ms7Kb/IMG-0121-4.avif',
+                        'https://i.postimg.cc/wjGtcHyQ/IMG-0143-3.avif',
+                        'https://i.postimg.cc/JhLfFHkr/Screenshot-2025-04-22-at-12-45-04-AM.png'
+                    ]
+                );
+                showSlide(0); // Ensure the first slide is displayed when the overlay is opened
+            });
+
+            communal.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleBlueOverlayWithGallery(
+                    'This unconventional “dinner plate” is an art piece meant to challenge the norms we associate with dining. If you’ve ever been told not to “play with your food”, you can forget that with this plate! This piece was made entirely from spray-painted 3D-printed materials (so please do not actually eat from it).<br><br><a href="https://1drv.ms/p/c/73b3dc79e6552c71/EfXMTZiVgNtFpToVFsISA2YBjEX80FWBOahv46qqxmz6mg?e=l2Qhag" target="_blank" style="color: white; text-decoration: underline;">More info</a>',
+                    [
+                        'https://i.postimg.cc/8crh8524/communal-nourishment-pic1.jpg',
+                        'https://i.postimg.cc/XXS9nW3b/communal-pic2.jpg',
+                        'https://i.postimg.cc/mDnQ6M5h/communal-pic3.jpg'
+                    ]
+                );
+                showSlide(0); // Ensure the first slide is displayed when the overlay is opened
+            });
+
+            pockets.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showPocketsOverlay();
+            });
+
+            const encyclo = document.querySelector('.encyclo');
+            encyclo.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const overlay = document.createElement('div');
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100%';
+                overlay.style.height = '100%';
+                overlay.style.backgroundColor = 'rgba(220, 200, 80, 0.8)';
+                overlay.style.zIndex = '9999';
+                overlay.style.display = 'flex';
+                overlay.style.flexDirection = 'column';
+                overlay.style.justifyContent = 'flex-start';
+                overlay.style.alignItems = 'center';
+                overlay.style.color = 'black';
+                overlay.style.fontFamily = "'Zilla Slab', serif";
+                overlay.style.textAlign = 'center';
+                overlay.style.fontSize = '1.3rem';
+                overlay.style.overflowY = 'auto'; /* Enable scrolling */
+
+                const images = [
+                    'https://i.postimg.cc/xCLzg7Mp/Elastic-Encyclopedia-Book-pg-1.png',
+                    'https://i.postimg.cc/NF4rvHN1/Elastic-Encyclopedia-Book-pg-2.png',
+                    'https://i.postimg.cc/rsctHJ9V/Elastic-Encyclopedia-Book-pg-3.png',
+                    'https://i.postimg.cc/vmJnrMg6/Elastic-Encyclopedia-Book-pg-5.png',
+                    'https://i.postimg.cc/DfdGX928/Elastic-Encyclopedia-Book-pg-6.png',
+                    'https://i.postimg.cc/qMJ3X1RQ/Elastic-Encyclopedia-Book-pg-7.png'
+                ];
+
+                const slidesHtml = images
+                    .map((url) => `<img src="${url}" alt="Gallery Image" style="max-width: 80%; height: auto; margin-bottom: 1rem;">`)
+                    .join('');
+
+                overlay.innerHTML = `
+                    <div class="yellow-overlay-text" style="max-width: 90%; margin-bottom: 1rem;">
+                        <p>
+                            The Elastic Enycyclopedia is part of a collection of various products and digital works, all centered around the theme of elastic.
+                            </p>
+                            Within my project series, I first explored elastic by taking apart the material and doing research on its history, its use, and its qualities—compiling everything I’ve learned into this book. I then explored different ways of manipulating the material that were both additive and subtractive, my processes being weaving, felting, and braiding. This experimentation led me to create a springy cat toy and a coin pouch out of elastic, which showcase the materials' versatility. Finally, elastic was explored as a material for repair—creating a functional yet stylish patch for a pair of pants, complete with a digital repair manual.
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                        ${slidesHtml}
+                    </div>
+                `;
+
+                overlay.addEventListener('click', (e) => {
+                    if (!e.target.closest('img') && !e.target.closest('p')) {
+                        overlay.remove(); // Remove the overlay when clicking outside the content
+                    }
+                });
+
+                document.body.appendChild(overlay);
+            });
+
+            document.body.addEventListener('click', (event) => {
+                const overlay = document.getElementById('blueOverlay');
+                if (!event.target.closest('.gallery-container') && !event.target.closest('.blue-overlay-text a')) {
+                    overlay.style.display = 'none'; // Hide overlay when clicking outside the gallery or link
+                }
+            }); // Hide overlay when clicking anywhere
+
+            // Create the "grab!" text element
+            const grabText = document.createElement('div');
+            grabText.textContent = 'grab!';
+            grabText.style.position = 'absolute';
+            grabText.style.color = 'black';
+            grabText.style.fontFamily = "'Zilla Slab', serif";
+            grabText.style.fontSize = '1rem';
+            grabText.style.pointerEvents = 'none';
+            grabText.style.display = 'none'; // Initially hidden
+            grabText.style.zIndex = '10000';
+            document.body.appendChild(grabText);
+
+            // Show "grab!" text when hovering over an image
+            const images = document.querySelectorAll('.pathways-container, .weaving-container, .encyclo-container, .communal-container, .hopper-container, .aarp-container, .bounce-container, .pockets-container');
+            images.forEach(image => {
+                image.addEventListener('mousemove', (e) => {
+                    grabText.style.left = `${e.pageX + 10}px`; // Position slightly to the right of the cursor
+                    grabText.style.top = `${e.pageY + 10}px`; // Position slightly below the cursor
+                    grabText.style.display = 'block'; // Show the text
+                });
+
+                image.addEventListener('mouseleave', () => {
+                    grabText.style.display = 'none'; // Hide the text when not hovering
+                });
+            });
+
+            // Create the "can't grab :(" text element
+            const cantGrabText = document.createElement('div');
+            cantGrabText.textContent = "can't grab :(";
+            cantGrabText.style.position = 'absolute';
+            cantGrabText.style.color = 'black';
+            cantGrabText.style.fontFamily = "'Zilla Slab', serif";
+            cantGrabText.style.fontSize = '1rem';
+            cantGrabText.style.pointerEvents = 'none';
+            cantGrabText.style.display = 'none'; // Initially hidden
+            cantGrabText.style.zIndex = '10000';
+            document.body.appendChild(cantGrabText);
+
+            // Show "can't grab :(" text when hovering over .gino
+            const ginoElement = document.querySelector('.gino');
+            ginoElement.addEventListener('mousemove', (e) => {
+                cantGrabText.style.left = `${e.pageX + 10}px`; // Position slightly to the right of the cursor
+                cantGrabText.style.top = `${e.pageY + 10}px`; // Position slightly below the cursor
+                cantGrabText.style.display = 'block'; // Show the text
+            });
+
+            ginoElement.addEventListener('mouseleave', () => {
+                cantGrabText.style.display = 'none'; // Hide the text when not hovering
+            });
+        });
     </script>
 </body>
 </html>
