@@ -29,18 +29,19 @@
             transform: scale(1); /* Default scale */
             transform-origin: top left;
             z-index: 50; /* Bring .ginopalacios-container to the front */
+            cursor: pointer; /* Add pointer cursor on hover */
         }
         
         .gino-container {
             position: absolute;
             opacity: 0.9;
-            width: 50%;
             max-width: 375px;
             height: auto;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%); /* Center horizontally and vertically */
             z-index: 10; /* Ensure .gino is on top */
+            cursor: pointer; /* Add pointer cursor on hover */
         }
 
         .pathways-container,
@@ -156,6 +157,9 @@
         padding: 15px;
     }
     .instruction-text {
+        visibility: visible; 
+    }
+    .instruction-text-mobile {
         visibility: hidden; 
     }
         
@@ -196,12 +200,16 @@
         font-size: 1.4rem; /* Decrease font size for mobile */
     }
     .instruction-text-mobile {
+        visibility: visible; 
         position: absolute;
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
         font-size: .8rem; /* Decrease font size */
         white-space: nowrap; /* Prevent text wrapping */
+    }
+    .instruction-text {
+        visibility: hidden; 
     }
 
     .pathways-container,
@@ -282,7 +290,7 @@
 
     .weaving-overlay-image {
         transform: scale(1.65); /* Increase the size of the .weaving overlay image */
-        margin-top: 8rem; /* Reset margin for larger screens */
+        margin-top: 8.5rem; /* Reset margin for larger screens */
         margin-right: 7rem;
     }
 
@@ -475,7 +483,7 @@
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Zilla Slab', serif;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: black;
     z-index: 10000; /* Ensure it appears above other elements */
     text-align: center;
@@ -489,8 +497,11 @@
     <div class="ginopalacios-container" onclick="resetColor()">
         <img src="https://i.postimg.cc/j5F0s97H/ginopalacios-website-title.png" class="ginopalacios" width="180" height="36" alt="Gino Palacios Website Title" />
     </div>
-    <div class="instruction-text" onclick="changeInstructionTextColor()">(click, drag, hover, play!)</div>
-    <div class="instruction-text-mobile" onclick="changeInstructionTextColor()">(click, drag, play!)</div>
+    <div class="instruction-text" onclick="changeInstructionTextColor()">
+        (click, <a href="https://en.wikipedia.org/wiki/Drag_(entertainment)#:~:text=Drag%20is%20a%20performance%20of,Drag%20usually%20involves%20cross%2Ddressing." 
+            target="_blank" style="text-decoration: none; color: inherit;">drag</a>, hover, play!)
+    </div>
+    <div class="instruction-text-mobile" onclick="changeInstructionTextColor()">(click my name!)</div>
     <div class="side-buttons-container">
         <div class="about-red-container" id="aboutRed" onclick="showGinoOverlay()">
             <img src="https://i.postimg.cc/pr3HB7VW/about-website-button-red.png" class="about-red" width="41" height="20" alt="About Button" />
@@ -696,59 +707,28 @@
                 let offsetX = 0, offsetY = 0;
                 let wasDragged = false;
 
-                // Mouse events
                 element.addEventListener('mousedown', (e) => {
-                    startDrag(e.clientX, e.clientY);
+                    offsetX = e.clientX - element.getBoundingClientRect().left;
+                    offsetY = e.clientY - element.getBoundingClientRect().top;
+                    element.style.cursor = 'grabbing';
+                    wasDragged = false; // Reset drag state
+
+                    const onMouseMove = (event) => {
+                        wasDragged = true; // Mark as dragged
+                        element.style.position = 'absolute';
+                        element.style.left = `${event.clientX - offsetX}px`;
+                        element.style.top = `${event.clientY - offsetY}px`;
+                    };
+
+                    const onMouseUp = () => {
+                        document.removeEventListener('mousemove', onMouseMove);
+                        document.removeEventListener('mouseup', onMouseUp);
+                        element.style.cursor = 'grab';
+                    };
+
                     document.addEventListener('mousemove', onMouseMove);
                     document.addEventListener('mouseup', onMouseUp);
                 });
-
-                // Touch events
-                element.addEventListener('touchstart', (e) => {
-                    const touch = e.touches[0];
-                    startDrag(touch.clientX, touch.clientY);
-                    document.addEventListener('touchmove', onTouchMove);
-                    document.addEventListener('touchend', onTouchEnd);
-                });
-
-                function startDrag(clientX, clientY) {
-                    offsetX = clientX - element.getBoundingClientRect().left;
-                    offsetY = clientY - element.getBoundingClientRect().top;
-                    element.style.cursor = 'grabbing';
-                    wasDragged = false; // Reset drag state
-                }
-
-                function onMouseMove(event) {
-                    drag(event.clientX, event.clientY);
-                }
-
-                function onTouchMove(event) {
-                    const touch = event.touches[0];
-                    drag(touch.clientX, touch.clientY);
-                }
-
-                function drag(clientX, clientY) {
-                    wasDragged = true; // Mark as dragged
-                    element.style.position = 'absolute';
-                    element.style.left = `${clientX - offsetX}px`;
-                    element.style.top = `${clientY - offsetY}px`;
-                }
-
-                function onMouseUp() {
-                    endDrag(onMouseMove, onMouseUp);
-                }
-
-                function onTouchEnd() {
-                    endDrag(onTouchMove, onTouchEnd);
-                }
-
-                function endDrag(moveHandler, upHandler) {
-                    document.removeEventListener('mousemove', moveHandler);
-                    document.removeEventListener('mouseup', upHandler);
-                    document.removeEventListener('touchmove', moveHandler);
-                    document.removeEventListener('touchend', upHandler);
-                    element.style.cursor = 'grab';
-                }
 
                 element.addEventListener('click', (e) => {
                     if (!wasDragged) {
