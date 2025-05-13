@@ -133,7 +133,7 @@
         font-size: 1.2rem; /* Corrected font size */
         padding: 5px 10px; /* Corrected padding */
     }
-        .weaving-overlay-text {
+    .weaving-overlay-text {
         padding: 15px;
     }
 
@@ -155,12 +155,15 @@
     .hopper-overlay-text {
         padding: 15px;
     }
+    .instruction-text {
+        visibility: hidden; 
+    }
         
 } /* Closing brace added here */
 
 @media (max-width: 480px) {
     .side-buttons-container {
-        transform: scale(0.9); /* Scale down further for mobile */
+        transform: scale(1); /* Scale down further for mobile */
     }
 
     .ginopalacios-container {
@@ -192,7 +195,26 @@
     .communal-overlay-text h2 {
         font-size: 1.4rem; /* Decrease font size for mobile */
     }
+    .instruction-text-mobile {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: .8rem; /* Decrease font size */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
 
+    .pathways-container,
+    .weaving-container,
+    .encyclo-container,
+    .communal-container,
+    .hopper-container,
+    .aarp-container, 
+    .bounce-container,
+    .pockets-container {
+        width: 30%; /* Increase the width for mobile */
+        max-width: 300px; /* Adjust the max width */
+    }
 }
 
 @media (min-width: 865px) {
@@ -337,6 +359,15 @@
         width: 49%; /* Bottom images take half the width */
         align-self: flex-end; /* Align bottom images to the right */
     }
+
+    .instruction-text {
+        font-size: 1rem; /* Decrease font size */
+        visibility: visible; /* Show the instruction text on larger screens */
+    }
+
+    .instruction-text-mobile {
+        visibility: hidden; /* Hide the mobile instruction text on larger screens */
+    }
 } /* Closing brace for @media (min-width: 865px) */
 
 @media (min-width: 1024px) {
@@ -424,6 +455,32 @@
 .elastic-overlay-text {
     color: black; /* Set text color to black */
 }
+
+.instruction-text {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.3rem;
+    color: black;
+    z-index: 10000; /* Ensure it appears above other elements */
+    text-align: center;
+
+}
+
+.instruction-text-mobile {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.3rem;
+    color: black;
+    z-index: 10000; /* Ensure it appears above other elements */
+    text-align: center;
+    white-space: nowrap; /* Prevent text wrapping */
+}
 </style>
 </head>
 <body>
@@ -432,6 +489,8 @@
     <div class="ginopalacios-container" onclick="resetColor()">
         <img src="https://i.postimg.cc/j5F0s97H/ginopalacios-website-title.png" class="ginopalacios" width="180" height="36" alt="Gino Palacios Website Title" />
     </div>
+    <div class="instruction-text" onclick="changeInstructionTextColor()">(click, drag, hover, play!)</div>
+    <div class="instruction-text-mobile" onclick="changeInstructionTextColor()">(click, drag, play!)</div>
     <div class="side-buttons-container">
         <div class="about-red-container" id="aboutRed" onclick="showGinoOverlay()">
             <img src="https://i.postimg.cc/pr3HB7VW/about-website-button-red.png" class="about-red" width="41" height="20" alt="About Button" />
@@ -456,25 +515,25 @@
         <img src="https://i.postimg.cc/2ycd0nzY/gino-headshot-red.png" class="gino" alt="Gino Headshot" />
     </div>
     <div class="artworks-container">
-        <div class="communal-container" onclick="showCommunalOverlay()" onmouseover="showCommunal()">
+        <div class="communal-container" onmouseover="showCommunal()">
             <img src="https://i.postimg.cc/rmnz3kH6/Communal-nourishment-blue.jpg" class="communal" alt="Communal Nourishment Artwork" />
         </div>
-        <div class="pathways-container" onclick="showPathwaysOverlay()" onmouseover="showPathways()">
+        <div class="pathways-container" onmouseover="showPathways()">
             <img src="https://i.postimg.cc/MK2LCQJD/Pathways-blue.png" class="pathways" alt="Pathways Artwork" />
         </div>
-        <div class="weaving-container" onclick="showWeavingOverlay()" onmouseover="showPurple()">
+        <div class="weaving-container" onmouseover="showPurple()">
             <img src="https://i.postimg.cc/1tChrYN3/weaving-purple.jpg" class="weaving" alt="Weaving Poster" />
         </div>
-        <div class="encyclo-container" onclick="showEncycloOverlay()" onmouseover="showEncyclo()">
+        <div class="encyclo-container" onmouseover="showEncyclo()">
             <img src="https://i.postimg.cc/nLWQhWBf/Elastic-page-3-yellow.png" class="encyclo" alt="Elastic Encyclopedia Page" />
         </div>
-        <div class="hopper-container" onclick="showHopperOverlay()" onmouseover="showHopper()">
+        <div class="hopper-container" onmouseover="showHopper()">
             <img src="https://i.postimg.cc/qvk5nP8W/hopper.jpg" class="hopper" alt="The Joey Hopper" />
         </div>
-        <div class="aarp-container" onclick="showAarpOverlay()" onmouseover="showTruename()">
+        <div class="aarp-container" onmouseover="showTruename()">
             <img src="https://i.postimg.cc/8zsxKR7Q/Publicly-Private-Teaser-Flyer-green.png" class="aarp" alt="The True Name Fund Teaser Flyer" />
         </div>
-        <div class="bounce-container" onclick="showBounceOverlay()" onmouseover="showBounce()">
+        <div class="bounce-container" onmouseover="showBounce()">
             <img src="https://i.postimg.cc/G3kmMDyG/bounce-pink.jpg" class="bounce" alt="Bounce Call for Clients Post" />
         </div>
     </div>
@@ -635,25 +694,265 @@
             elements.forEach(element => {
                 element.style.cursor = 'grab';
                 let offsetX = 0, offsetY = 0;
+                let wasDragged = false;
 
                 element.addEventListener('mousedown', (e) => {
                     offsetX = e.clientX - element.getBoundingClientRect().left;
                     offsetY = e.clientY - element.getBoundingClientRect().top;
                     element.style.cursor = 'grabbing';
+                    wasDragged = false; // Reset drag state
 
-                    function onMouseMove(event) {
+                    const onMouseMove = (event) => {
+                        wasDragged = true; // Mark as dragged
                         element.style.position = 'absolute';
                         element.style.left = `${event.clientX - offsetX}px`;
                         element.style.top = `${event.clientY - offsetY}px`;
-                    }
+                    };
+
+                    const onMouseUp = () => {
+                        document.removeEventListener('mousemove', onMouseMove);
+                        document.removeEventListener('mouseup', onMouseUp);
+                        element.style.cursor = 'grab';
+                    };
 
                     document.addEventListener('mousemove', onMouseMove);
-
-                    document.addEventListener('mouseup', () => {
-                        document.removeEventListener('mousemove', onMouseMove);
-                        element.style.cursor = 'grab';
-                    }, { once: true });
+                    document.addEventListener('mouseup', onMouseUp);
                 });
+
+                element.addEventListener('click', (e) => {
+                    if (!wasDragged) {
+                        // Trigger overlay only if the element was not dragged
+                        const overlayFunction = getOverlayFunction(element);
+                        if (overlayFunction) overlayFunction();
+                    }
+                    wasDragged = false; // Reset after click
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const weavingContainer = document.querySelector('.weaving-container');
+            let wasDragged = false;
+
+            weavingContainer.addEventListener('mousedown', () => {
+                wasDragged = false; // Reset drag state
+                const onMouseMove = () => {
+                    wasDragged = true; // Mark as dragged
+                };
+                const onMouseUp = () => {
+                    weavingContainer.removeEventListener('mousemove', onMouseMove);
+                    weavingContainer.removeEventListener('mouseup', onMouseUp);
+                };
+                weavingContainer.addEventListener('mousemove', onMouseMove);
+                weavingContainer.addEventListener('mouseup', onMouseUp);
+            });
+
+            weavingContainer.addEventListener('click', () => {
+                if (!wasDragged) {
+                    showWeavingOverlay(); // Show overlay only if not dragged
+                }
+            });
+
+            makeDraggable(); // Ensure draggable functionality is initialized
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const pathwaysContainer = document.querySelector('.pathways-container');
+            let wasDragged = false;
+
+            pathwaysContainer.addEventListener('mousedown', (e) => {
+                wasDragged = false; // Reset drag state
+                const onMouseMove = () => {
+                    wasDragged = true; // Mark as dragged
+                };
+                const onMouseUp = () => {
+                    pathwaysContainer.removeEventListener('mousemove', onMouseMove);
+                    pathwaysContainer.removeEventListener('mouseup', onMouseUp);
+                };
+                pathwaysContainer.addEventListener('mousemove', onMouseMove);
+                pathwaysContainer.addEventListener('mouseup', onMouseUp);
+            });
+
+            pathwaysContainer.addEventListener('click', (e) => {
+                if (!wasDragged) {
+                    e.stopPropagation(); // Prevent event bubbling
+                    showPathwaysOverlay(); // Show overlay only if not dragged
+                }
+            });
+
+            makeDraggable(pathwaysContainer); // Ensure draggable functionality is initialized
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const encycloContainer = document.querySelector('.encyclo-container');
+            let wasDragged = false;
+
+            encycloContainer.addEventListener('mousedown', () => {
+                wasDragged = false; // Reset drag state
+                const onMouseMove = () => {
+                    wasDragged = true; // Mark as dragged
+                };
+                const onMouseUp = () => {
+                    encycloContainer.removeEventListener('mousemove', onMouseMove);
+                    encycloContainer.removeEventListener('mouseup', onMouseUp);
+                };
+                encycloContainer.addEventListener('mousemove', onMouseMove);
+                encycloContainer.addEventListener('mouseup', onMouseUp);
+            });
+
+            encycloContainer.addEventListener('click', () => {
+                if (!wasDragged) {
+                    showEncycloOverlay(); // Show overlay only if not dragged
+                }
+            });
+
+            makeDraggable(); // Ensure draggable functionality is initialized
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const hopperContainer = document.querySelector('.hopper-container');
+            let wasDragged = false;
+
+            hopperContainer.addEventListener('mousedown', () => {
+                wasDragged = false; // Reset drag state
+                const onMouseMove = () => {
+                    wasDragged = true; // Mark as dragged
+                };
+                const onMouseUp = () => {
+                    hopperContainer.removeEventListener('mousemove', onMouseMove);
+                    hopperContainer.removeEventListener('mouseup', onMouseUp);
+                };
+                hopperContainer.addEventListener('mousemove', onMouseMove);
+                hopperContainer.addEventListener('mouseup', onMouseUp);
+            });
+
+            hopperContainer.addEventListener('click', () => {
+                if (!wasDragged) {
+                    showHopperOverlay(); // Show overlay only if not dragged
+                }
+            });
+
+            makeDraggable(); // Ensure draggable functionality is initialized
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const communalContainer = document.querySelector('.communal-container');
+            let wasDragged = false;
+
+            communalContainer.addEventListener('mousedown', () => {
+                wasDragged = false; // Reset drag state
+                const onMouseMove = () => {
+                    wasDragged = true; // Mark as dragged
+                };
+                const onMouseUp = () => {
+                    communalContainer.removeEventListener('mousemove', onMouseMove);
+                    communalContainer.removeEventListener('mouseup', onMouseUp);
+                };
+                communalContainer.addEventListener('mousemove', onMouseMove);
+                communalContainer.addEventListener('mouseup', onMouseUp);
+            });
+
+            communalContainer.addEventListener('click', () => {
+                if (!wasDragged) {
+                    showCommunalOverlay(); // Show overlay only if not dragged
+                }
+            });
+
+            makeDraggable(); // Ensure draggable functionality is initialized
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const bounceContainer = document.querySelector('.bounce-container');
+            let wasDragged = false;
+
+            bounceContainer.addEventListener('mousedown', () => {
+                wasDragged = false; // Reset drag state
+                const onMouseMove = () => {
+                    wasDragged = true; // Mark as dragged
+                };
+                const onMouseUp = () => {
+                    bounceContainer.removeEventListener('mousemove', onMouseMove);
+                    bounceContainer.removeEventListener('mouseup', onMouseUp);
+                };
+                bounceContainer.addEventListener('mousemove', onMouseMove);
+                bounceContainer.addEventListener('mouseup', onMouseUp);
+            });
+
+            bounceContainer.addEventListener('click', () => {
+                if (!wasDragged) {
+                    showBounceOverlay(); // Show overlay only if not dragged
+                }
+            });
+
+            makeDraggable(); // Ensure draggable functionality is initialized
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const aarpContainer = document.querySelector('.aarp-container');
+            let wasDragged = false;
+
+            aarpContainer.addEventListener('mousedown', () => {
+                wasDragged = false; // Reset drag state
+                const onMouseMove = () => {
+                    wasDragged = true; // Mark as dragged
+                };
+                const onMouseUp = () => {
+                    aarpContainer.removeEventListener('mousemove', onMouseMove);
+                    aarpContainer.removeEventListener('mouseup', onMouseUp);
+                };
+                aarpContainer.addEventListener('mousemove', onMouseMove);
+                aarpContainer.addEventListener('mouseup', onMouseUp);
+            });
+
+            aarpContainer.addEventListener('click', () => {
+                if (!wasDragged) {
+                    showAarpOverlay(); // Show overlay only if not dragged
+                }
+            });
+
+            makeDraggable(); // Ensure draggable functionality is initialized
+        });
+
+        function showAarpOverlay() {
+            const overlay = document.createElement('div');
+            overlay.className = 'communal-overlay'; // Reuse the same class for styling
+
+            overlay.style.backgroundColor = 'rgba(28, 148, 0, 0.9)'; // Set the specific green overlay color for .aarp
+
+            overlay.innerHTML = `
+                <div class="communal-overlay-content">
+                    <div class="truename-overlay-text">
+                        <h2 style="margin-bottom: 1rem; font-weight: normal;">the true name fund flyer, 2025</h2>
+                        <p>
+                        
+                        
+                        \    Event teaser flyer created for LGBTQ+ non-profit Publicly Private.
+                        </p>
+                    </div>
+                    <div class="truename-overlay-image">
+                        <img src="https://i.postimg.cc/k4wcPHHj/Publicly-Private-Teaser-Flyer.png" alt="The True Name Fund Teaser Flyer" style="max-width: 80%; height: auto; margin-bottom: 1rem;">
+                    </div>
+                </div>
+            `;
+
+            // Create the "X" button
+            const closeButton = document.createElement('div');
+            closeButton.textContent = 'x';
+            closeButton.className = 'closeButton-container'; // Reuse the same class for styling
+            closeButton.addEventListener('click', () => {
+                overlay.remove(); // Remove the overlay
+                closeButton.remove(); // Remove the "X" button
+            });
+
+            document.body.appendChild(closeButton);
+            document.body.appendChild(overlay);
+            overlay.style.display = 'flex';
+
+            overlay.addEventListener('click', (e) => {
+                if (!e.target.closest('.communal-overlay-content')) {
+                    overlay.remove(); // Remove the overlay when clicking outside the content
+                    closeButton.remove(); // Remove the "X" button
+                }
             });
         }
 
@@ -787,7 +1086,7 @@
                             This poster is part of a collection of various products and digital works, all centered around the theme of elastic.
                         </p>
                         <p>
-                            The poster provides step-by-step instructions for weaving, showcasing the versatility of elastic as a material. It is designed to inspire creativity and experimentation with unconventional materials.
+                            The poster provides step-by-step instructions for weaving, showcasing the versatility of elastic as a material.
                         </p>
                     </div>
                     <div class="weaving-overlay-image">
@@ -859,47 +1158,6 @@
             });
         }
 
-        function showAarpOverlay() {
-            const overlay = document.createElement('div');
-            overlay.className = 'communal-overlay'; // Reuse the same class for styling
-
-            overlay.style.backgroundColor = 'rgba(28, 148, 0, 0.7)'; // Set the specific green overlay color for .aarp
-
-            overlay.innerHTML = `
-                <div class="communal-overlay-content">
-                    <div class="truename-overlay-text">
-                        <h2 style="margin-bottom: 1rem; font-weight: normal;">the true name fund flyer, 2025</h2>
-                        <p>
-                            Event teaser flyer created for LGBTQ+ non-profit Publicly Private.
-                        </p>
-                    </div>
-                    <div class="truename-overlay-image">
-                        <img src="https://i.postimg.cc/k4wcPHHj/Publicly-Private-Teaser-Flyer.png" alt="The True Name Fund Teaser Flyer" style="max-width: 80%; height: auto; margin-bottom: 1rem;">
-                    </div>
-                </div>
-            `;
-
-            // Create the "X" button
-            const closeButton = document.createElement('div');
-            closeButton.textContent = 'x';
-            closeButton.className = 'closeButton-container'; // Reuse the same class for styling
-            closeButton.addEventListener('click', () => {
-                overlay.remove(); // Remove the overlay
-                closeButton.remove(); // Remove the "X" button
-            });
-
-            document.body.appendChild(closeButton);
-            document.body.appendChild(overlay);
-            overlay.style.display = 'flex';
-
-            overlay.addEventListener('click', (e) => {
-                if (!e.target.closest('.communal-overlay-content')) {
-                    overlay.remove(); // Remove the overlay when clicking outside the content
-                    closeButton.remove(); // Remove the "X" button
-                }
-            });
-        }
-
         function showPathwaysOverlay() {
             const overlay = document.createElement('div');
             overlay.className = 'communal-overlay'; // Reuse the same class for styling
@@ -917,7 +1175,7 @@
                     <div class="pathways-overlay-image">
                         <img src="https://i.postimg.cc/C1m10yV6/Pathways-Mixed-Media.png" alt="Pathways Artwork" style="max-width: 80%; height: auto; margin-bottom: 1rem;">
                         <img src="https://i.postimg.cc/P5VndtLD/pathways-zoom1.jpg" alt="Close-up of resin ducks on artwork" style="max-width: 80%; height: auto; margin-bottom: 1rem;">
-                        <img src="https://i.postimg.cc/g0wFJfRT/pathways-zoom2.jpg" alt="Close-up of highlighted words in newspaper: 'people supporting you', 'we can do this', 'laughing', 'really cool', 'celebrate', 'reaching', 'power'. " style="max-width: 80%; height: auto; margin-bottom: 1rem;">
+                        <img src="https://i.postimg.cc/g0wFJfRT/pathways-zoom2.jpg" alt="Close-up of highlighted words in newspaper: 'people supporting you', 'we can do this', 'laughing', 'really cool', 'celebrate', 'reaching', 'power'." style="max-width: 80%; height: auto; margin-bottom: 1rem;">
                     </div>
                 </div>
             `;
@@ -1057,7 +1315,7 @@
             overlay.innerHTML = `
                 <div class="communal-overlay-content">
                     <div class="elastic-overlay-text">
-                        <h2 style="margin-bottom: 1rem; font-weight: normal;">elastic encyclopedia, 2023</h2>
+                        <h2 style="margin-bottom: 1rem; font-weight: normal;">elastic encyclopedia, 2024</h2>
                         <p>
                             The Elastic Encyclopedia is part of a collection of various products and digital works, all centered around the theme of elastic.
                         </p>
@@ -1104,16 +1362,11 @@
                 element.setAttribute('draggable', 'false');
             });
 
-            makeDraggable('.pathways-container, .weaving-container, .encyclo-container, .communal-container, .gino-container, .aarp-container, .bounce-container, .pockets-container');
             randomizePositions();
 
             const ginoContainer = document.querySelector('.gino');
             ginoContainer.addEventListener('click', showGinoOverlay);
 
-            const pathways = document.querySelector('.pathways');
-            pathways.addEventListener('click', (event) => {
-                event.stopPropagation();
-                showPathwaysOverlay();
             });
 
             const ginopalaciosContainer = document.querySelector('.ginopalacios-container');
@@ -1121,9 +1374,9 @@
                 randomizePositions(); // Apply randomizePositions on click
             });
 
-            const hopper = document.querySelector('.hopper');
-            const communal = document.querySelector('.communal');
-            const pockets = document.querySelector('.pockets');
+            const hopperElement = document.querySelector('.hopper');
+            const communalElement = document.querySelector('.communal');
+            const pocketsElement = document.querySelector('.pockets');
             const weavingElement = document.querySelector('.weaving');
             const bounceElement = document.querySelector('.bounce');
             const aarpElement = document.querySelector('.aarp');
@@ -1148,11 +1401,17 @@
                 showPocketsOverlay();
             });
 
-            weavingElement.addEventListener('click', (event) => {
+            const encyclo = document.querySelector('.encyclo');
+            encyclo.addEventListener('click', (event) => {
                 event.stopPropagation();
-                showWeavingOverlay();
-            });
+                showEncycloOverlay();
 
+            const pathways = document.querySelector('.pathways');
+            pathways.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showPathwaysOverlay();
+                
+            
             bounceElement.addEventListener('click', (event) => {
                 event.stopPropagation();
                 showBounceOverlay();
@@ -1167,17 +1426,6 @@
                 console.error("Element with class 'aarp-container' not found.");
             }
 
-            const encyclo = document.querySelector('.encyclo');
-            encyclo.addEventListener('click', (event) => {
-                event.stopPropagation();
-                showEncycloOverlay();
-            });
-
-            document.body.addEventListener('click', (event) => {
-                const overlay = document.getElementById('blueOverlay');
-                if (!event.target.closest('.gallery-container') && !event.target.closest('.blue-overlay-text a')) {
-                    overlay.style.display = 'none'; // Hide overlay when clicking outside the gallery or link
-                }
             }); // Hide overlay when clicking anywhere
 
             // Create the "grab!" text element
@@ -1192,20 +1440,23 @@
             grabText.style.zIndex = '10000';
             document.body.appendChild(grabText);
 
-            // Show "grab!" text when hovering over main images (except .gino)
-            const mainImages = document.querySelectorAll('.communal, .weaving, .pathways, .encyclo, .hopper, .aarp, .bounce, .pockets');
-            mainImages.forEach(image => {
-                image.addEventListener('mousemove', (e) => {
-                    grabText.style.left = `${e.pageX + 10}px`; // Position slightly to the right of the cursor
-                    grabText.style.top = `${e.pageY + 10}px`; // Position slightly below the cursor
-                    grabText.style.display = 'block'; // Show the text
-                    cantGrabText.style.display = 'none'; // Ensure "can't grab :(" is hidden
+            const elements = document.querySelectorAll('.pathways-container, .weaving-container, .encyclo-container, .communal-container, .hopper-container, .aarp-container, .bounce-container, .pockets-container');
+
+            elements.forEach(element => {
+                element.addEventListener('mousemove', (e) => {
+                    if (getComputedStyle(element).cursor === 'grab') {
+                        grabText.style.left = `${e.pageX + 10}px`; // Position slightly to the right of the cursor
+                        grabText.style.top = `${e.pageY + 10}px`; // Position slightly below the cursor
+                        grabText.style.display = 'block'; // Show the text
+                    }
                 });
 
-                image.addEventListener('mouseleave', () => {
+                element.addEventListener('mouseleave', () => {
                     grabText.style.display = 'none'; // Hide the text when not hovering
                 });
             });
+
+            makeDraggable(); // Ensure draggable functionality is initialized
 
             // Create the "can't grab :(" text element
             const cantGrabText = document.createElement('div');
@@ -1231,8 +1482,6 @@
             ginoElement.addEventListener('mouseleave', () => {
                 cantGrabText.style.display = 'none'; // Hide the text when not hovering
             });
-
-            const targetImages = document.querySelectorAll('.hopper, .communal, .pockets, .pathways');
             const allImages = document.querySelectorAll('.gino, .communal, .weaving, .pathways, .encyclo, .hopper, .aarp, .bounce, .pockets');
 
             allImages.forEach(image => {
@@ -1249,6 +1498,38 @@
                         target.classList.remove('grayscale');
                     });
                 });
+            });
+
+            // Add functionality to change the color of .instruction-text on click
+            document.addEventListener('DOMContentLoaded', () => {
+                // Define the color-changing logic
+                const overlayColors = [
+                    'rgba(184, 39, 0, 0.9)',  // Red (Gino overlay)
+                    'rgba(0, 135, 220, 0.9)', // Blue (Pathways overlay)
+                    'rgba(119, 23, 159, 0.9)', // Purple (Weaving overlay)
+                    'rgba(250, 220, 1, 0.9)',  // Yellow (Encyclo overlay)
+                    'rgba(28, 148, 0, 0.9)',   // Green (AARP overlay)
+                    'rgba(246, 76, 187, 0.9)'  // Pink (Bounce overlay)
+                ];
+
+                let currentColorIndex = 0; // Maintain state globally
+
+                function changeInstructionTextColor() {
+                    const instructionText = document.querySelector('.instruction-text');
+                    if (instructionText) {
+                        currentColorIndex = (currentColorIndex + 1) % overlayColors.length;
+                        instructionText.style.color = overlayColors[currentColorIndex];
+                        console.log(`Instruction text color changed to: ${overlayColors[currentColorIndex]}`);
+                    } else {
+                        console.error("Element with class 'instruction-text' not found.");
+                    }
+                }
+
+                // Attach the function to the onclick event
+                const instructionText = document.querySelector('.instruction-text');
+                if (instructionText) {
+                    instructionText.onclick = changeInstructionTextColor;
+                }
             });
         });
     </script>
